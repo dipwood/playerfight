@@ -2,9 +2,28 @@ extends layout
 
 block content
   h1= title
-  p Welcome to The #{title}
+  p Welcome to #{title}
   p Welcome back, #{username}!
+  script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js')
+
+  p do a fite?
+    form(method='get', action='/playerselect')
+      input(type='submit', value='do a fite')
+
+
+
 
   p
     form(method='get', action='/')
       input(type='submit', value='Back to Main Menu')
+
+  div(ng-app='myApp', ng-controller='myCtrl')
+    button(ng-click='count = count + 1') Click Me!
+      
+    p {{ count }}
+    
+  script.
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+    $scope.count = 0;
+    });
