@@ -5,25 +5,36 @@ block content
   p Welcome to #{title}
   p Welcome back, #{username}!
   script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js')
+  script(src='http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js')
+  script(src='js/playergetter.js')
 
   p do a fite?
     form(method='get', action='/playerselect')
       input(type='submit', value='do a fite')
 
-
-
-
   p
     form(method='get', action='/')
       input(type='submit', value='Back to Main Menu')
 
-  div(ng-app='myApp', ng-controller='myCtrl')
-    button(ng-click='count = count + 1') Click Me!
-      
-    p {{ count }}
+  div(ng-app='myApp', ng-controller='personCtrl')
+    button(ng-click='toggle()') Hide user
+    p(ng-hide='myVar')
+      First Name: 
+      input(type='text', ng-model='firstName')
+      br
+      Last Name: 
+      input(type='text', ng-model='lastName')
+      br
+      br
+      Full Name: {{firstName + &quot; &quot; + lastName}}
     
-  script.
-    var app = angular.module('myApp', []);
-    app.controller('myCtrl', function($scope) {
-    $scope.count = 0;
-    });
+    script.
+      var app = angular.module('myApp', []);
+      app.controller('personCtrl', function($scope) {
+      $scope.firstName = "John",
+      $scope.lastName = "Doe"
+      $scope.myVar = false;
+      $scope.toggle = function() {
+      $scope.myVar = !$scope.myVar;
+      }
+      });

@@ -11,10 +11,12 @@ var start = require('./routes/start');
 var load = require('./routes/load');
 var newgame = require('./routes/newgame');
 var game = require('./routes/game');
+var test = require('./routes/test');
 
 var express = require('express');
 var session = require('express-session');
 var MongoStore = require('connect-mongostore')(session);
+// var requirejs = require('requirejs');
 
 var app = express();
 
@@ -49,6 +51,14 @@ app.use(session(
   // unset: 'destroy',
   cookie: { maxAge: 2629746000 }
   }));
+/*
+requirejs.config({
+    //Pass the top-level main.js/index.js require
+    //function to requirejs so that node modules
+    //are loaded relative to the top-level JS file.
+    nodeRequire: require
+});
+*/
 
 app.use('/', routes);
 app.use('/users', users);
@@ -56,6 +66,7 @@ app.use('/start', start);
 app.use('/load', load);
 app.use('/newgame', newgame);
 app.use('/game', game);
+app.use('/test', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
