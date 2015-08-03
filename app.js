@@ -16,6 +16,7 @@ var test = require('./routes/test');
 var express = require('express');
 var session = require('express-session');
 var MongoStore = require('connect-mongostore')(session);
+var mongoose = require('mongoose');
 // var requirejs = require('requirejs');
 
 var app = express();
@@ -51,12 +52,12 @@ app.use(session(
   // unset: 'destroy',
   cookie: { maxAge: 2629746000 }
   }));
+
 /*
-requirejs.config({
-    //Pass the top-level main.js/index.js require
-    //function to requirejs so that node modules
-    //are loaded relative to the top-level JS file.
-    nodeRequire: require
+// Angoose bootstraping 
+require("angoose").init(app, {
+   'module-dirs':'./public/models',
+   'mongo-opts': 'localhost:27017/test',
 });
 */
 
