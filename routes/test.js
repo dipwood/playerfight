@@ -7,7 +7,7 @@ var ObjectId = require('mongodb').ObjectID;
 /* test */
 router.get('/', function(req, res, next) 
 	{
-
+	/*
 	mongoose.connect('mongodb://localhost/kitties');
 
 	var db = mongoose.connection;
@@ -37,13 +37,19 @@ router.get('/', function(req, res, next)
 	var fluffy = new Kitten({ name: 'fluffy' });
 	fluffy.speak(); // "Meow name is fluffy"
 
-	/* for later
-	http://mongoosejs.com/docs/
+	/* for later http://mongoosejs.com/docs/
 
 	fluffy.save(function (err, fluffy) {
  	if (err) return console.error(err);
   	fluffy.speak();
 	});
+
+	Kitten.find(function (err, kittens) {
+  	if (err) return console.error(err);
+  	console.log(kittens);
+	})
+
+	db.close();
 	*/
 	res.render('test', { title: 'test' })
 	})
