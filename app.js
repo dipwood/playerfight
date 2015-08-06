@@ -12,6 +12,7 @@ var load = require('./routes/load');
 var newgame = require('./routes/newgame');
 var game = require('./routes/game');
 var test = require('./routes/test');
+var playerfetcher = require('./routes/playerfetcher');
 
 var express = require('express');
 var session = require('express-session');
@@ -26,7 +27,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -68,6 +69,7 @@ app.use('/load', load);
 app.use('/newgame', newgame);
 app.use('/game', game);
 app.use('/test', test);
+app.use('/playerfetcher', playerfetcher)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

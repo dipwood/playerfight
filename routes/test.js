@@ -7,7 +7,7 @@ var ObjectId = require('mongodb').ObjectID;
 /* test */
 router.get('/', function(req, res, next) 
 	{
-	/*
+	/* 
 	mongoose.connect('mongodb://localhost/kitties');
 
 	var db = mongoose.connection;

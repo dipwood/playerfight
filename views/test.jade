@@ -1,55 +1,16 @@
 doctype html
 html
-  head
-    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js')
-    script(src='http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js')
-    script(src='js/playergetter.js')
-    script(src='models/playerschema.js')
-
-    script.
-      var moduleA = angular.module("MyModuleA", []);
-      moduleA.controller("MyControllerA", function($scope) 
-        {
-        $scope.name = "Bob A";
-        });
-
-      var moduleB = angular.module("MyModuleB", []);
-      moduleB.controller("MyControllerB", function($scope) 
-      	{
-      	$scope.name = "Steve B";
-      	});
-      
-      angular.element(document).ready(function() 
-      	{
-      	var myDiv1 = document.getElementById("myDiv1");
-      	angular.bootstrap(myDiv1, ["MyModuleA", "MyModuleB"]);
-      	var myDiv2 = document.getElementById("myDiv2");
-      	angular.bootstrap(myDiv2, ["MyModuleB"]);
-      	var playerGetterDiv = document.getElementById("playerGetterDiv");
-      	angular.bootstrap(playerGetterDiv, ["playerGetModule"]);
-      	});
-
+  script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js')
+  script(src='js/playergetter.js')
   body
-    #myDiv1
-      h1 myDiv1
-                   
-      div(ng-controller='MyControllerA')
-        {{ name }}
-
-      div(ng-controller='MyControllerB')
-        {{ name }}
-
-    #myDiv2
-      h1 myDiv2
-
-      div(ng-controller='MyControllerB')
-        {{ name }}
-
-    #playerGetterDiv
-      h1 playerGetterDiv
-
-      div(ng-controller='playerGetController')
-        p Name: {{ playername }}
-        p Team: {{ team }}
-        p Luck: {{ stats.luck }}
-        p Macro: {{ stats.macro }}
+    div(ng-app='playerGetModule', ng-controller='playerGetController')
+       ul
+        li(ng-repeat='x in names')
+          p Name: 
+            {{ x.playername }}
+          p Team: 
+            {{ x.team}}
+          p Luck:
+            {{ x.stats.luck}}
+          p Macro:
+            {{ x.stats.macro}}
