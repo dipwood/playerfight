@@ -5,19 +5,24 @@ block content
   p Welcome to #{title}
   p Welcome back, #{username}!
   script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js')
-  script(src='js/playergetter.js')
+  script(src='controllers/playergetter.js')
+  script(src='controllers/myapp.js')
+
+  div
+    ng-view
 
   p do a fite? SELECT A DUDE, BRO!!
     form(method='get', action='/playerselect')
       input(type='submit', value='do a fite')
 
   div(ng-app='playerGetModule', ng-controller='playerGetController')
-       ul
-        li(ng-repeat='x in names')
-          p Name: {{ x.playername }}
-          p Team: {{ x.team}}
-          p Luck: {{ x.stats.luck}}
-          p Macro: {{ x.stats.macro}}
+    ul
+      li(ng-repeat='x in names')
+        form(method'post', action='/playerselect')
+          input(type='submit', value='{{ x.playername }}')
+        p Team: {{ x.team}}
+        p Luck: {{ x.stats.luck}}
+        p Macro: {{ x.stats.macro}}
   p
     form(method='get', action='/')
       input(type='submit', value='Back to Main Menu')

@@ -1,0 +1,8 @@
+div(ng-app='playerGetModule', ng-controller='playerGetController')
+      ul
+        li(ng-repeat='x in names')
+          form(method'post', action='/playerselect')
+            input(type='submit', value='{{ x.playername }}')
+          p Team: {{ x.team}}
+          p Luck: {{ x.stats.luck}}
+          p Macro: {{ x.stats.macro}}

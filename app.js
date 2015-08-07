@@ -13,6 +13,7 @@ var newgame = require('./routes/newgame');
 var game = require('./routes/game');
 var test = require('./routes/test');
 var playerfetcher = require('./routes/playerfetcher');
+var home = require('./routes/home')
 
 var express = require('express');
 var session = require('express-session');
@@ -33,6 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static('public'));
 
 app.use(session(
   {
@@ -70,6 +72,13 @@ app.use('/newgame', newgame);
 app.use('/game', game);
 app.use('/test', test);
 app.use('/playerfetcher', playerfetcher)
+app.use('/home', home)
+
+// catch-all route so non-explicitly defined routes load angular routes
+app.use('*', function(req, res){
+    //res.render('/');
+    res.sendFile(__dirname + '/public/home.jade'); // this loads it like a text file for some reason...
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

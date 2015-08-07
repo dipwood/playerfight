@@ -25,7 +25,7 @@ router.get('/', function(req, res, next)
       		assert.equal(err, null);
       		if (doc != null) 
        			{
-       			console.log("Found the players!");
+       			console.log("Found a player!");
        			players.push(doc);
         		} 
         	
