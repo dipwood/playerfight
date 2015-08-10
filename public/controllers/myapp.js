@@ -4,7 +4,7 @@ var app = angular.module('myapp', ["ngResource", 'ngRoute']).
       $locationProvider.html5Mode(true);
       $routeProvider.
       when('/playerselect', {
-        templateUrl: '/views/playerselect.jade',
+        templateUrl: '/views/playerselect',
         controller: 'playerGetController'
       }).
       otherwise({

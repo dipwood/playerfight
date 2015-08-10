@@ -18,4 +18,10 @@ router.get('/', function(req, res, next)
 	console.log("Session ID: ", sessionID)
 	})
 
+router.get('/', function(req, res, next) 
+	{
+	var name = req.params.name;
+  	res.render('partials/' + name);
+  	})
+
 module.exports = router;

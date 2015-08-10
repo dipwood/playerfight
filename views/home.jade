@@ -1,10 +1,10 @@
 extends layout
-
-html(ng-app="myapp")
-  block content
-    script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js')
-    script(src='controllers/playergetter.js')
-    script(src='controllers/myapp.js')
-
-    div
-      ng-view
+block content
+  body(ng-app='RoutingApp')
+    h2 AngularJS Routing Example
+    p
+      | Jump to the 
+      a(href='#first') first
+      |  or 
+      a(href='#second') second page
+    div(ng-view='')
